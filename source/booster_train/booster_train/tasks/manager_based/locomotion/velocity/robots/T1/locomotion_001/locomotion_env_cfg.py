@@ -29,7 +29,7 @@ import booster_train.tasks.manager_based.locomotion.velocity.mdp as mdp
 
 VELOCITY_RANGE = {
     "lin_vel_x": (-1.0, 1.0),
-    "lin_vel_y": (-0.3, 0.3),
+    "lin_vel_y": (-1.0, 1.0),
     "ang_vel_z": (-1.0, 1.0),
 }
 
