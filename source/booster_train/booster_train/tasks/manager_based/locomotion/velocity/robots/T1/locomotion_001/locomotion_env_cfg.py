@@ -95,4 +95,31 @@ class CurriculumCfg:
     
 @configclass
 class LocomotionEnvCfg(ManagerBasedRLEnvCfg):
-    
+    """Configuration for the locomotion velocity-tracking environment."""
+
+    # Scene settings
+    scene: MySceneCfg = MySceneCfg(num_envs=4096, env_spacing=2.5)
+    # Basic settings
+    observations: ObservationsCfg = ObservationsCfg()
+    actions: ActionsCfg = ActionsCfg()
+    commands: CommandsCfg = CommandsCfg()
+    # MDP settings
+    rewards: RewardsCfg = RewardsCfg()
+    terminations: TerminationsCfg = TerminationsCfg()
+    events: EventCfg = EventCfg()
+    curriculum: CurriculumCfg = CurriculumCfg()
+
+    def __post_init__(self):
+        """Post initialization."""
+        # general settings
+        self.decimation = 4
+        self.episode_length_s = 10.0
+        # simulation settings
+        self.sim.dt = 0.005
+        self.sim.render_interval = self.decimation
+        self.sim.physics_material = self.scene.terrain.physics_material
+        self.sim.physx.gpu_max_rigid_patch_count = 10 * 2**15
+        # viewer settings
+        self.viewer.origin_type = "world"   # for rotation the view by mouse and keyboard
+        self.viewer.eye = (3.0, -4.0, 2.0)
+        self.viewer.lookat = (0.0, 0.0, 1.0)
