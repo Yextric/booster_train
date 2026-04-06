@@ -72,5 +72,27 @@ class MySceneCfg(InteractiveSceneCfg):
 # MDP settings
 ##
 
-
+@configclass
+class CommandsCfg:
+    
+@configclass
+class ActionsCfg:
+    
+@configclass
+class ObservationsCfg:
+    
+@configclass
+class EventsCfg:
+    
+@configclass
+class RewardsCfg:
+    
+@configclass
+class TerminationsCfg:
+    
+@configclass
+class CurriculumCfg:
+    
+@configclass
+class LocomotionEnvCfg(ManagerBasedRLEnvCfg):
     
